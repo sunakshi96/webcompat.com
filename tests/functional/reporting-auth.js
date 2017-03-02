@@ -27,7 +27,7 @@ define([
     },
 
     "Report button shows name": function() {
-      return FunctionalHelpers.openPage(this, url("/issues/new"), ".js-Navbar-link")
+      return FunctionalHelpers.openPage(this, url("/issues/new"), "#submitgithub")
         .findByCssSelector("#submitgithub").getVisibleText()
         .then(function(text) {
           assert.include(text, "Report as"); //Report as FooUser (logged in)
