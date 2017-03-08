@@ -99,6 +99,20 @@ issues.MetaDataView = Backbone.View.extend({
   }
 });
 
+issues.AsideView = Backbone.View.extend({
+  el: $("#js-Issue-aside"),
+  initialize: function() {
+    this.model.on("change:issueState", _.bind(function() {
+      this.render();
+    }, this));
+  },
+  template: _.template($("#aside-tmpl").html()),
+  render: function() {
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  }
+});
+
 issues.BodyView = Backbone.View.extend({
   el: $(".wc-Issue-report"),
   mainView: null,
